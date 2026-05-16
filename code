@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pusula – Geleceğine Yön Ver</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE6D6;
+    --ink: #1A1A14;
+    --ink-mid: #3D3D2E;
+    --ink-light: #7A7A60;
+    --forest: #1B4D3E;
+    --forest-mid: #2D6B57;
+    --forest-light: #4A9B7F;
+    --amber: #C8852A;
+    --amber-light: #F2C06E;
+    --amber-pale: #FBF0D9;
+    --coral: #C45B3A;
+    --white: #FEFDF9;
+    --radius: 16px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', serif;
+    line-height: 1.15;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26,26,20,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--forest);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .nav-logo span { color: var(--amber); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--ink-mid);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--forest); }
+
+  .nav-cta {
+    background: var(--forest);
+    color: var(--cream) !important;
+    padding: 0.55rem 1.3rem;
+    border-radius: 100px;
+  }
+
+  .nav-cta:hover { background: var(--forest-mid); color: var(--cream) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 10rem 5% 6rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -10%;
+    top: -5%;
+    width: 70%;
+    height: 110%;
+    background: var(--forest);
+    border-radius: 40% 0 0 40%;
+    z-index: 0;
+  }
+
+  .hero-text { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    background: var(--amber-pale);
+    border: 1px solid var(--amber-light);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--forest);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--ink-mid);
+    max-width: 420px;
+    margin-bottom: 2.4rem;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--forest);
+    color: var(--cream);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--forest-mid); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1.5px solid var(--ink-mid);
+    color: var(--ink-mid);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--forest); color: var(--forest); }
+
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .hero-stat-card {
+    background: rgba(255,253,249,0.12);
+    border: 1px solid rgba(255,253,249,0.25);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.8rem;
+    color: var(--cream);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-stat-card .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--amber-light);
+  }
+
+  .hero-stat-card .stat-label {
+    font-size: 0.88rem;
+    color: rgba(245,240,232,0.75);
+    margin-top: 0.3rem;
+  }
+
+  .hero-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* ─── DIVIDER TAG ─── */
+  .section-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--forest-light);
+    margin-bottom: 0.8rem;
+  }
+
+  /* ─── ABOUT ─── */
+  .about {
+    padding: 7rem 5%;
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1.4rem;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  .about h2 em { font-style: italic; color: var(--forest); font-weight: 300; }
+
+  .about p {
+    color: var(--ink-mid);
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .pillar {
+    background: var(--cream);
+    border-radius: var(--radius-sm);
+    padding: 1.3rem 1.5rem;
+    border-left: 3px solid var(--forest-light);
+  }
+
+  .pillar h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 0.3rem;
+  }
+
+  .pillar p { font-size: 0.85rem; color: var(--ink-light); margin: 0; }
+
+  /* ─── PODCAST ─── */
+  .podcast {
+    padding: 7rem 5%;
+    background: var(--forest);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .podcast::after {
+    content: '"';
+    position: absolute;
+    right: 5%;
+    top: 2rem;
+    font-family: 'Fraunces', serif;
+    font-size: 30rem;
+    line-height: 1;
+    color: rgba(255,253,249,0.04);
+    pointer-events: none;
+  }
+
+  .podcast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+  }
+
+  .podcast h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    max-width: 500px;
+  }
+
+  .podcast h2 em { font-style: italic; font-weight: 300; color: var(--amber-light); }
+
+  .podcast-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .podcast-card {
+    background: rgba(255,253,249,0.07);
+    border: 1px solid rgba(255,253,249,0.12);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .podcast-card:hover {
+    background: rgba(255,253,249,0.12);
+    transform: translateY(-3px);
+  }
+
+  .podcast-num {
+    font-family: 'Fraunces', serif;
+    font-size: 0.8rem;
+    color: var(--amber-light);
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .podcast-num::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--amber-light);
+  }
+
+  .podcast-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .podcast-card p {
+    font-size: 0.87rem;
+    color: rgba(245,240,232,0.65);
+    margin-bottom: 1.3rem;
+    line-height: 1.6;
+  }
+
+  .podcast-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .podcast-dur {
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.5);
+    letter-spacing: 0.06em;
+  }
+
+  .play-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--amber);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+
+  .play-btn:hover { background: var(--amber-light); transform: scale(1.08); }
+
+  .play-btn svg { fill: var(--forest); margin-left: 2px; }
+
+  .podcast-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber-light);
+    border: 1px solid rgba(242,192,110,0.35);
+    border-radius: 100px;
+    padding: 0.25rem 0.65rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* ─── NETWORK ─── */
+  .network {
+    padding: 7rem 5%;
+    background: var(--cream-dark);
+  }
+
+  .network-header { max-width: 600px; margin-bottom: 3.5rem; }
+
+  .network h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .network h2 em { font-style: italic; font-weight: 300; color: var(--amber); }
+
+  .network p { color: var(--ink-mid); font-size: 1rem; }
+
+  .network-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .profile-cards { display: flex; flex-direction: column; gap: 1rem; }
+
+  .profile-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    border: 1px solid rgba(26,26,20,0.06);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .profile-card:hover { transform: translateX(4px); box-shadow: -4px 0 0 var(--forest-light); }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .av-teal { background: #D4EDE6; color: var(--forest); }
+  .av-amber { background: var(--amber-pale); color: var(--amber); }
+  .av-coral { background: #F5E0D9; color: var(--coral); }
+  .av-blue { background: #DCE9F7; color: #1B4775; }
+
+  .profile-info { flex: 1; }
+
+  .profile-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+  }
+
+  .profile-role {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .profile-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .tag {
+    font-size: 0.72rem;
+    background: var(--cream);
+    color: var(--ink-mid);
+    border: 1px solid rgba(26,26,20,0.1);
+    border-radius: 100px;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .badge-grad { background: #D4EDE6; color: var(--forest); border-color: transparent; }
+  .badge-stud { background: var(--amber-pale); color: var(--amber); border-color: transparent; }
+
+  .network-right { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .network-cta-card {
+    background: var(--forest);
+    border-radius: var(--radius);
+    padding: 2rem;
+    color: var(--cream);
+  }
+
+  .network-cta-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: var(--cream);
+  }
+
+  .network-cta-card p { font-size: 0.9rem; color: rgba(245,240,232,0.7); margin-bottom: 1.5rem; }
+
+  .btn-amber {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--amber);
+    color: var(--cream);
+    padding: 0.7rem 1.5rem;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .btn-amber:hover { background: #D4922E; }
+
+  .stats-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+  .stat-box {
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 1.2rem;
+    text-align: center;
+    border: 1px solid rgba(26,26,20,0.06);
+  }
+
+  .stat-box .num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--forest);
+    line-height: 1;
+  }
+
+  .stat-box .lbl { font-size: 0.78rem; color: var(--ink-light); margin-top: 0.2rem; }
+
+  /* ─── EDUCATION ─── */
+  .education {
+    padding: 7rem 5%;
+    background: var(--white);
+  }
+
+  .edu-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .education h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .education h2 em { font-style: italic; font-weight: 300; color: var(--coral); }
+
+  .edu-desc { color: var(--ink-mid); font-size: 1rem; }
+
+  .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .edu-card {
+    border-radius: var(--radius);
+    padding: 2rem;
+    border: 1px solid rgba(26,26,20,0.07);
+    transition: transform 0.2s;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+
+  .edu-card:hover { transform: translateY(-4px); }
+
+  .edu-card.forest { background: var(--forest); color: var(--cream); border-color: transparent; }
+  .edu-card.cream { background: var(--cream); }
+  .edu-card.amber-pale { background: var(--amber-pale); }
+
+  .edu-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+    font-size: 1.4rem;
+  }
+
+  .edu-card.forest .edu-icon { background: rgba(255,253,249,0.12); }
+  .edu-card.cream .edu-icon { background: var(--cream-dark); }
+  .edu-card.amber-pale .edu-icon { background: rgba(200,133,42,0.15); }
+
+  .edu-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .edu-card.forest h3 { color: var(--cream); }
+  .edu-card.forest p { color: rgba(245,240,232,0.7); }
+
+  .edu-card p { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.6; margin-bottom: 1.2rem; }
+
+  .edu-link {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .edu-card.forest .edu-link { color: var(--amber-light); }
+  .edu-card.cream .edu-link { color: var(--forest); }
+  .edu-card.amber-pale .edu-link { color: var(--amber); }
+
+  .edu-link::after { content: '→'; transition: transform 0.2s; }
+  .edu-card:hover .edu-link::after { transform: translateX(4px); }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials {
+    padding: 7rem 5%;
+    background: var(--amber-pale);
+  }
+
+  .testimonials h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em;
+  }
+
+  .testimonials h2 em { font-style: italic; font-weight: 300; color: var(--amber); }
+
+  .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .test-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    border: 1px solid rgba(26,26,20,0.06);
+  }
+
+  .test-quote {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .test-author { display: flex; align-items: center; gap: 0.8rem; }
+  .test-author .avatar { width: 36px; height: 36px; font-size: 0.8rem; }
+
+  .test-author-name { font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+  .test-author-role { font-size: 0.78rem; color: var(--ink-light); }
+
+  /* ─── JOIN / NEWSLETTER ─── */
+  .join {
+    padding: 7rem 5%;
+    background: var(--ink);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .join::before {
+    content: 'Pusula';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Fraunces', serif;
+    font-size: 22rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .join-inner { position: relative; z-index: 1; max-width: 580px; margin: 0 auto; }
+
+  .join h2 {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .join h2 em { font-style: italic; font-weight: 300; color: var(--amber-light); }
+
+  .join p { color: rgba(245,240,232,0.6); font-size: 1rem; margin-bottom: 2.5rem; }
+
+  .join-form {
+    display: flex;
+    gap: 0.6rem;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .join-form input {
+    flex: 1;
+    padding: 0.85rem 1.3rem;
+    border-radius: 100px;
+    border: 1px solid rgba(245,240,232,0.2);
+    background: rgba(245,240,232,0.07);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .join-form input::placeholder { color: rgba(245,240,232,0.35); }
+  .join-form input:focus { border-color: rgba(245,240,232,0.5); }
+
+  .join-form button {
+    background: var(--amber);
+    color: var(--white);
+    border: none;
+    padding: 0.85rem 1.5rem;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .join-form button:hover { background: #D4922E; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(245,240,232,0.08);
+    padding: 3rem 5%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    color: rgba(245,240,232,0.55);
+    font-size: 0.88rem;
+  }
+
+  .footer-brand { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 800; color: var(--cream); margin-bottom: 0.8rem; }
+  .footer-brand span { color: var(--amber); }
+  .footer-desc { line-height: 1.7; }
+
+  .footer-col h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-col a { color: rgba(245,240,232,0.55); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--cream); }
+
+  .footer-bottom {
+    background: var(--ink);
+    padding: 1.2rem 5%;
+    border-top: 1px solid rgba(245,240,232,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.3);
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── HAMBURGER (mobile placeholder) ─── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding-top: 8rem; }
+    .hero::before { width: 100%; height: 45%; top: 55%; border-radius: 40% 40% 0 0; right: 0; }
+    .hero-visual { flex-direction: row; flex-wrap: wrap; }
+    .hero-stat-row { flex-direction: row; }
+    .about, .network-layout, .edu-header { grid-template-columns: 1fr; gap: 2rem; }
+    .podcast-grid, .edu-grid, .test-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .hero-stat-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>◎</span> Pusula</a>
+  <ul class="nav-links">
+    <li><a href="#about">Hakkımızda</a></li>
+    <li><a href="#podcast">Podcast</a></li>
+    <li><a href="#network">Ağ</a></li>
+    <li><a href="#education">Kaynaklar</a></li>
+    <li><a class="nav-cta" href="#join">Katıl</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">🧭 Geleceğine Yön Ver</div>
+    <h1>
+      Kariyer yolun<br>
+      <em>belirsiz mi?</em><br>
+      Seninleyiz.
+    </h1>
+    <p class="hero-desc">
+      Pusula, genç insanların geleceğe dair kaygılarını azaltmak, doğru kariyer yolunu keşfetmek ve birbirleriyle anlam dolu bağlantılar kurmaları için yaratılan bir platform.
+    </p>
+    <div class="hero-actions">
+      <a href="#join" class="btn-primary">Topluluğa Katıl →</a>
+      <a href="#podcast" class="btn-outline">Podcastleri Keşfet</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-stat-card">
+      <div class="stat-num">12,400+</div>
+      <div class="stat-label">Platforma Kayıtlı Genç</div>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat-card">
+        <div class="stat-num">340+</div>
+        <div class="stat-label">Mezun Mentor</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-num">80+</div>
+        <div class="stat-label">Podcast Bölümü</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="fade-up">
+    <div class="section-tag">— Biz Kimiz</div>
+    <h2>
+      Gençlerin sesi,<br>
+      <em>geleceğin pusuları</em>
+    </h2>
+    <p>
+      Pusula, üniversite öğrencileri ve mezunları bir araya getiren, kariyer kaygısını azaltmayı hedefleyen bir sivil toplum kuruluşudur. Yıllar içinde edindikleri deneyimleri paylaşan mezunlar ile geleceklerini şekillendirmek isteyen öğrenciler burada buluşur.
+    </p>
+    <p>
+      Eğitimden iş dünyasına geçişteki belirsizliğin yarattığı kaygının üstesinden gelmek için doğru bilgi, doğru ağ ve doğru destek şarttır. Biz tam da bunun için varız.
+    </p>
+  </div>
+  <div class="pillar-grid fade-up">
+    <div class="pillar">
+      <h4>🎙 Podcast</h4>
+      <p>Gerçek hikayeleri, gerçek insanların sesinden dinle.</p>
+    </div>
+    <div class="pillar">
+      <h4>🌐 Ağ</h4>
+      <p>Sektör profesyonelleri ve mezunlarla bağlantı kur.</p>
+    </div>
+    <div class="pillar">
+      <h4>📚 Kaynaklar</h4>
+      <p>Kariyer rehberleri, sektör analizleri ve yol haritaları.</p>
+    </div>
+    <div class="pillar">
+      <h4>🤝 Mentorluk</h4>
+      <p>Sana özel mentor eşleşmesi ve bire bir görüşmeler.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PODCAST -->
+<section class="podcast" id="podcast">
+  <div class="podcast-header">
+    <h2>
+      Hikayeleri <em>dinle,</em><br>
+      yolu keşfet
+    </h2>
+    <a href="#" class="btn-amber">Tüm Bölümler →</a>
+  </div>
+  <div class="podcast-grid">
+
+    <div class="podcast-card fade-up">
+      <div class="podcast-tag">Kariyer Değişimi</div>
+      <div class="podcast-num">Bölüm 31</div>
+      <h3>Hukuk'tan Teknoloji'ye: Korkusuz Bir Sıçrayış</h3>
+      <p>Hukuk mezunu Melis Yıldız, nasıl yazılım dünyasına geçtiğini ve bu yolda karşılaştığı önyargıları anlatıyor.</p>
+      <div class="podcast-meta">
+        <span class="podcast-dur">42 dk</span>
+        <button class="play-btn" aria-label="Oynat">
+          <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="3,1 13,7 3,13"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="podcast-card fade-up">
+      <div class="podcast-tag">Kaygı & Sağlık</div>
+      <div class="podcast-num">Bölüm 29</div>
+      <h3>Sınav Döneminin Ötesinde: Gelecek Korkusuyla Başa Çıkmak</h3>
+      <p>Klinik psikolog Dr. Ahmet Sarı ile kariyer kaygısı ve gençlerde yaygınlaşan belirsizlik korkusu üzerine.</p>
+      <div class="podcast-meta">
+        <span class="podcast-dur">55 dk</span>
+        <button class="play-btn" aria-label="Oynat">
+          <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="3,1 13,7 3,13"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="podcast-card fade-up">
+      <div class="podcast-tag">Girişimcilik</div>
+      <div class="podcast-num">Bölüm 27</div>
+      <h3>23 Yaşında Kurucu: "Başarı Görünmeyenlerden Yapılır"</h3>
+      <p>Henüz ikinci sınıftayken kendi startupını kuran Emre Kaplan ile fikirden ürüne uzanan engebeli yol.</p>
+      <div class="podcast-meta">
+        <span class="podcast-dur">38 dk</span>
+        <button class="play-btn" aria-label="Oynat">
+          <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="3,1 13,7 3,13"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="podcast-card fade-up">
+      <div class="podcast-tag">Yurt Dışı</div>
+      <div class="podcast-num">Bölüm 25</div>
+      <h3>Türkiye'den Avrupa'ya: Yurt Dışında Kariyer Kurmak</h3>
+      <p>Almanya'da mühendis olarak çalışan Selin Çelik, burs sürecini, adapte olmayı ve nostaljiyi paylaşıyor.</p>
+      <div class="podcast-meta">
+        <span class="podcast-dur">49 dk</span>
+        <button class="play-btn" aria-label="Oynat">
+          <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="3,1 13,7 3,13"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="podcast-card fade-up">
+      <div class="podcast-tag">Sektör Analizi</div>
+      <div class="podcast-num">Bölüm 22</div>
+      <h3>Yapay Zeka Çağında Hangi Meslekler Hayatta Kalır?</h3>
+      <p>İş dünyası araştırmacısı Deniz Akgün ile değişen iş piyasasında kendinizi nasıl konumlandırmalısınız.</p>
+      <div class="podcast-meta">
+        <span class="podcast-dur">61 dk</span>
+        <button class="play-btn" aria-label="Oynat">
+          <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="3,1 13,7 3,13"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="podcast-card fade-up">
+      <div class="podcast-tag">Portföy & CV</div>
+      <div class="podcast-num">Bölüm 20</div>
+      <h3>İşe Alım Yöneticileri Gerçekte Neye Bakıyor?</h3>
+      <p>Üç farklı sektörden İK uzmanı, binlerce özgeçmişten öğrendiklerini açıkça paylaşıyor.</p>
+      <div class="podcast-meta">
+        <span class="podcast-dur">44 dk</span>
+        <button class="play-btn" aria-label="Oynat">
+          <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="3,1 13,7 3,13"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NETWORK -->
+<section class="network" id="network">
+  <div class="network-header fade-up">
+    <div class="section-tag">— Topluluk Ağı</div>
+    <h2>Doğru insanla<br><em>doğru anda</em> tanış</h2>
+    <p>Öğrenciler mezunlarla, meraklılar uzmanlarla buluşur. Sektörün içinden samimi geri bildirimler, gerçek bağlantılar.</p>
+  </div>
+
+  <div class="network-layout">
+    <div class="profile-cards">
+
+      <div class="profile-card fade-up">
+        <div class="avatar av-teal">MY</div>
+        <div class="profile-info">
+          <div class="profile-name">Melis Yıldırım</div>
+          <div class="profile-role">Ürün Yöneticisi · İstanbul</div>
+          <div class="profile-tags">
+            <span class="tag badge-grad">Mezun</span>
+            <span class="tag">Fintech</span>
+            <span class="tag">Ürün Yönetimi</span>
+            <span class="tag">Agile</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-card fade-up">
+        <div class="avatar av-amber">KD</div>
+        <div class="profile-info">
+          <div class="profile-name">Kerem Doğan</div>
+          <div class="profile-role">4. Sınıf Öğrenci · ODTÜ Bilgisayar Müh.</div>
+          <div class="profile-tags">
+            <span class="tag badge-stud">Öğrenci</span>
+            <span class="tag">Yazılım</span>
+            <span class="tag">ML</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-card fade-up">
+        <div class="avatar av-coral">ZA</div>
+        <div class="profile-info">
+          <div class="profile-name">Zeynep Arslan</div>
+          <div class="profile-role">UX Tasarımcısı · Boğaziçi Mezunu</div>
+          <div class="profile-tags">
+            <span class="tag badge-grad">Mezun</span>
+            <span class="tag">Tasarım</span>
+            <span class="tag">Kullanıcı Araştırması</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-card fade-up">
+        <div class="avatar av-blue">BA</div>
+        <div class="profile-info">
+          <div class="profile-name">Burak Aydın</div>
+          <div class="profile-role">3. Sınıf · Hacettepe İşletme</div>
+          <div class="profile-tags">
+            <span class="tag badge-stud">Öğrenci</span>
+            <span class="tag">Pazarlama</span>
+            <span class="tag">Staj Arıyor</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="network-right">
+      <div class="network-cta-card fade-up">
+        <h3>Ağa Katıl</h3>
+        <p>Profilini oluştur, sektörünü seç ve sana en uygun mentorla eşleş. Ücretsiz ve hep açık.</p>
+        <a href="#join" class="btn-amber">Profil Oluştur →</a>
+      </div>
+      <div class="stats-mini fade-up">
+        <div class="stat-box">
+          <div class="num">47</div>
+          <div class="lbl">Sektör</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">340+</div>
+          <div class="lbl">Mentor</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">%92</div>
+          <div class="lbl">Eşleşme Oranı</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">3.6K</div>
+          <div class="lbl">Bağlantı Kuruldu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education" id="education">
+  <div class="edu-header">
+    <div class="fade-up">
+      <div class="section-tag">— Kariyer Kaynakları</div>
+      <h2>Öğren,<br><em>hazırlan,</em><br>ilerle</h2>
+    </div>
+    <p class="edu-desc fade-up">
+      Gerçek sektör verilerine dayanan rehberler, yol haritaları ve interaktif araçlarla kariyer yolculuğunun her adımında yanındayız.
+    </p>
+  </div>
+
+  <div class="edu-grid">
+
+    <a href="#" class="edu-card forest fade-up">
+      <div class="edu-icon">🗺️</div>
+      <h3>Kariyer Yol Haritaları</h3>
+      <p>Yazılım, tasarım, finans, sağlık ve daha onlarca alanda adım adım kariyer rehberleri. Nereden başlayacağını bil.</p>
+      <div class="edu-link">İncele</div>
+    </a>
+
+    <a href="#" class="edu-card cream fade-up">
+      <div class="edu-icon">📊</div>
+      <h3>Sektör Analizleri</h3>
+      <p>Hangi meslekler büyüyor, hangi beceriler talep görüyor? Türkiye ve küresel iş piyasasındaki son veriler.</p>
+      <div class="edu-link">Oku</div>
+    </a>
+
+    <a href="#" class="edu-card amber-pale fade-up">
+      <div class="edu-icon">✍️</div>
+      <h3>CV & Mülakat Rehberi</h3>
+      <p>İşe alım uzmanlarından derlenen ipuçları, örnek CV'ler ve sık sorulan mülakat soruları ile hazırlıkları.</p>
+      <div class="edu-link">Başla</div>
+    </a>
+
+    <a href="#" class="edu-card cream fade-up">
+      <div class="edu-icon">🎓</div>
+      <h3>Burs & Fırsat Rehberi</h3>
+      <p>Yurt içi ve yurt dışı burslar, staj programları ve değişim fırsatları güncel listesi.</p>
+      <div class="edu-link">Keşfet</div>
+    </a>
+
+    <a href="#" class="edu-card amber-pale fade-up">
+      <div class="edu-icon">🧠</div>
+      <h3>Beceri Geliştirme</h3>
+      <p>Ücretsiz ve ücretli online kurslar, sertifika programları ve pratik projelere yönlendirilmiş seçkiler.</p>
+      <div class="edu-link">Listele</div>
+    </a>
+
+    <a href="#" class="edu-card forest fade-up">
+      <div class="edu-icon">💬</div>
+      <h3>Canlı Webinarlar</h3>
+      <p>Her hafta farklı bir sektörden konuklarla düzenlenen ücretsiz online etkinlikler. Sorunuzu sorun, doğrudan öğrenin.</p>
+      <div class="edu-link">Takvime Ekle</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-tag" style="display:block;text-align:center">— Topluluktan Sesler</div>
+  <h2>Onlar <em>deneyimledi,</em> şimdi senin sıran</h2>
+  <div class="test-grid">
+
+    <div class="test-card fade-up">
+      <p class="test-quote">"Pusula'daki mentorum olmasaydı muhtemelen hiç başvurmayı düşünmediğim bir şirkete şimdi çalışıyorum. Bazen doğru soruyu soran birine ihtiyaç duyuyorsunuz, işte o kişiyi burada buldum."</p>
+      <div class="test-author">
+        <div class="avatar av-teal" style="width:36px;height:36px;font-size:0.8rem">EK</div>
+        <div>
+          <div class="test-author-name">Elif Kaya</div>
+          <div class="test-author-role">Yazılım Geliştirici · İTÜ Mezunu</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-card fade-up">
+      <p class="test-quote">"Kariyer kaygısı benim için çok somut bir şeydi. Podcast bölümlerini dinlemeye başladığımda yalnız olmadığımı hissettim. Sonra ağa katıldım ve her şey değişti."</p>
+      <div class="test-author">
+        <div class="avatar av-amber" style="width:36px;height:36px;font-size:0.8rem">MÖ</div>
+        <div>
+          <div class="test-author-name">Mert Öztürk</div>
+          <div class="test-author-role">3. Sınıf Öğrenci · Bilkent</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-card fade-up">
+      <p class="test-quote">"Mezun olduğumda ne yapacağımı bilmiyordum. Sektör analizlerini ve yol haritalarını takip edince net bir plan oluşturdum. Altı ay içinde hayalindeki stajı buldum."</p>
+      <div class="test-author">
+        <div class="avatar av-coral" style="width:36px;height:36px;font-size:0.8rem">NÇ</div>
+        <div>
+          <div class="test-author-name">Nisan Çetin</div>
+          <div class="test-author-role">UX Tasarımcısı · Boğaziçi Mezunu</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="join" id="join">
+  <div class="join-inner">
+    <div class="section-tag" style="color: rgba(242,192,110,0.7)">— Aramıza Katıl</div>
+    <h2>Geleceğine bugün <em>pusulanı</em> çiz</h2>
+    <p>E-posta adresinle kaydol. Yeni bölümlerden, etkinliklerden ve fırsatlardan haberdar ol.</p>
+    <div class="join-form">
+      <input type="email" placeholder="e-posta adresin" />
+      <button type="button">Kaydol →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand"><span>◎</span> Pusula</div>
+    <p class="footer-desc">Gençlerin kariyer yolculuğunda yalnız olmadığını hatırlatan bir sivil toplum platformu. Ücretsiz, bağımsız, seninle.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Keşfet</h4>
+    <ul>
+      <li><a href="#">Podcast</a></li>
+      <li><a href="#">Topluluk Ağı</a></li>
+      <li><a href="#">Kariyer Rehberleri</a></li>
+      <li><a href="#">Webinarlar</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Hakkımızda</h4>
+    <ul>
+      <li><a href="#">Misyonumuz</a></li>
+      <li><a href="#">Ekip</a></li>
+      <li><a href="#">Sponsorlar</a></li>
+      <li><a href="#">İletişim</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Sosyal</h4>
+    <ul>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Twitter / X</a></li>
+      <li><a href="#">Spotify</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 Pusula STK. Tüm hakları saklıdır.</span>
+  <span>Gizlilik · Kullanım Koşulları</span>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelector('.join-form button').addEventListener('click', function() {
+    const input = document.querySelector('.join-form input');
+    if (input.value && input.value.includes('@')) {
+      this.textContent = '✓ Kaydolundu!';
+      this.style.background = '#2D6B57';
+      input.value = '';
+      input.placeholder = 'Teşekkürler! Görüşürüz 🧭';
+    } else {
+      input.style.borderColor = 'rgba(196,91,58,0.7)';
+      setTimeout(() => input.style.borderColor = '', 1500);
+    }
+  });
+</script>
+</body>
+</html>
