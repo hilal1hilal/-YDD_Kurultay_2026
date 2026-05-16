@@ -1,1 +1,1 @@
-# -YDD_Kurultay_2026
+ÇYDD_Kurultay_2026
